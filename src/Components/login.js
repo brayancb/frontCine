@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import '../styles/login.css';  
+
 
 function Login() {
   const [user, setUser] = useState('');
@@ -8,7 +10,6 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Simulación de llamada a backend
     try {
       const response = await fetch('https://tuapi.com/login', {
         method: 'POST',
@@ -20,8 +21,8 @@ function Login() {
 
       if (response.ok) {
         setMensaje('Inicio de sesión exitoso');
-        // Aquí puedes guardar el token y redirigir al usuario
         localStorage.setItem('token', data.token);
+        
       } else {
         setMensaje(data.error || 'Error en el inicio de sesión');
       }
@@ -31,11 +32,11 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Iniciar sesión</h2>
       <form onSubmit={handleSubmit}>
         <input 
-          type="user" 
+          type="text" 
           placeholder="Usuario" 
           value={user}
           onChange={(e) => setUser(e.target.value)} 

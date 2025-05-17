@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Login from './Components/login';
 import Register from './Components/register';
+import './styles/App.css';
+
 
 function App() {
   const [isLogin, setIsLogin] = useState(true);
@@ -9,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <h1>Bienvenido a la App</h1>
-      <button onClick={() => setIsLogin(!isLogin)}>
-        {isLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión'}
+      <button className="toggle-button" onClick={() => setIsLogin(!isLogin)}>
+          {isLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión'}
       </button>
       {isLogin ? <Login /> : <Register />}
     </div>
