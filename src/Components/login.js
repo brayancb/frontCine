@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import '../styles/login.css';  
-
+import { loginUser } from '../API/userService'; // Importa la función
 
 function Login() {
-  const [user, setUser] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
 
@@ -11,23 +11,14 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://tuapi.com/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user, password })
-      });
+      const data = await loginUser({ email, password }); // Llama a la función
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setMensaje('Inicio de sesión exitoso');
-        localStorage.setItem('token', data.token);
-        
-      } else {
-        setMensaje(data.error || 'Error en el inicio de sesión');
-      }
+      setMensaje('Inicio de sesión exitoso');
+      localStorage.setItem('token', data.token);
     } catch (error) {
-      setMensaje('Error de conexión con el servidor');
+      setMensaje(
+        error?.response?.data?.message || 'Error en el inicio de sesión'
+      );
     }
   };
 
@@ -37,9 +28,9 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <input 
           type="text" 
-          placeholder="Usuario" 
-          value={user}
-          onChange={(e) => setUser(e.target.value)} 
+          placeholder="Correo electrónico" 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)} 
           required 
         />
         <input 

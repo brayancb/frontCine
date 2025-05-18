@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../styles/register.css'; 
-
+import '../styles/register.css';
+import { registerUser } from '../API/userService'; // Importa la función
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -12,22 +12,16 @@ function Register() {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://tuapi.com/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password })
-      });
+      const data = await registerUser({ username, email, password }); // Llama a la función
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setMensaje('Registro exitoso');
-        // Puedes redirigir o limpiar los campos
-      } else {
-        setMensaje(data.error || 'Error en el registro');
-      }
+      setMensaje('Registro exitoso');
+      setUsername('');
+      setEmail('');
+      setPassword('');
     } catch (error) {
-      setMensaje('Error de conexión con el servidor');
+      setMensaje(
+        error?.response?.data?.message || 'Error en el registro'
+      );
     }
   };
 
@@ -58,7 +52,7 @@ function Register() {
         />
         <button type="submit">Registrarse</button>
       </form>
-      {mensaje && <p>{mensaje}</p>}
+      {mensaje && <p className={mensaje === 'Registro exitoso' ? 'mensaje-exito' : 'mensaje-error'}>{mensaje}</p>}
     </div>
   );
 }
