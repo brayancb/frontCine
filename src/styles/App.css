@@ -1,42 +1,54 @@
+.background-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.gif-left,
+.gif-right {
+  position: absolute;
+  top: 50%;
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transform: translateY(-50%);
+  z-index: 0;
+  opacity: 0.8;
+}
+
+.gif-left {
+  left: 0;
+}
+
+.gif-right {
+  right: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* capa oscura */
+  z-index: 1;
+}
+
 .App {
+  position: relative;
+  z-index: 2; /* contenido principal por encima de todo */
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/* Botón */
 .toggle-button {
   padding: 0.8rem 1.5rem;
   margin: 2rem 0;
@@ -55,6 +67,3 @@
   background: linear-gradient(135deg, #0056b3, #008bba);
   transform: scale(1.05);
 }
-
-
-
