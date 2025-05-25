@@ -1,28 +1,42 @@
 // src/App.js
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Components/login';
 import Register from './Components/register';
+import Cartelera from './Components/cartelera/cartelera';
 import './styles/App.css';
 
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
-
   return (
-    <div className="background-container">
-      <div className="gif-left" style={{ backgroundImage: "url('/cat-eat.gif')" }} />
-      <div className="gif-right" style={{ backgroundImage: "url('/cat-eat.gif')" }} />
-      <div className="overlay"></div>
+    <Router>
+      <div className="background-container">
+        <div className="gif-left" style={{ backgroundImage: "url('/cat-eat.gif')" }} />
+        <div className="gif-right" style={{ backgroundImage: "url('/cat-eat.gif')" }} />
+        <div className="overlay"></div>
 
-      <div className="App">
-        <h1>Welcome al cinema de Coquimbo York</h1>
-        <button className="toggle-button" onClick={() => setIsLogin(!isLogin)}>
-          {isLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión'}
-        </button>
-        {isLogin ? <Login /> : <Register />}
+        <div className="App">
+          <h1>Welcome al cinema de Coquimbo York</h1>
+          <Routes>
+            <Route path="/" element={<LoginRegisterWrapper />} />
+            <Route path="/cartelera" element={<Cartelera />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
+function LoginRegisterWrapper() {
+  const [isLogin, setIsLogin] = React.useState(true);
+
+  return (
+    <>
+      <button className="toggle-button" onClick={() => setIsLogin(!isLogin)}>
+        {isLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión'}
+      </button>
+      {isLogin ? <Login /> : <Register />}
+    </>
+  );
+}
 
 export default App;

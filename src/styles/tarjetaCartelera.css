@@ -1,0 +1,26 @@
+.tarjeta-cartelera {
+  width: 220px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.tarjeta-cartelera:hover {
+  transform: scale(1.05);
+}
+
+.tarjeta-cartelera img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.tarjeta-cartelera h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}

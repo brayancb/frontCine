@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/login.css';  
-import { loginUser } from '../API/userService'; // Importa la función
+import { loginUser } from '../API/userService';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -11,19 +12,24 @@ function Login() {
     e.preventDefault();
 
     try {
-      const data = await loginUser({ email, password }); // Llama a la función
-
+      const data = await loginUser({ email, password });
       setMensaje('Inicio de sesión exitoso');
       localStorage.setItem('token', data.token);
     } catch (error) {
-      setMensaje(
-        error?.response?.data?.message || 'Error en el inicio de sesión'
-      );
+      setMensaje(error?.response?.data?.message || 'Error en el inicio de sesión');
     }
   };
 
   return (
     <div className="login-container">
+      
+      {/* Botón en esquina superior izquierda */}
+      <div className="btn-cartelera-container">
+        <Link to="/cartelera" className="btn-cartelera">
+          Cartelera
+        </Link>
+      </div>
+
       <h2>Iniciar sesión</h2>
       <form onSubmit={handleSubmit}>
         <input 
