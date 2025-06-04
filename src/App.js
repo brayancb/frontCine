@@ -6,8 +6,13 @@ import Register from './Components/register';
 import Cartelera from './Components/cartelera/cartelera';
 import './styles/App.css';
 
+//Importación del cache
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './Lib/ClienteCache';
+
 function App() {
   return (
+    <QueryClientProvider client = {queryClient}>
     <Router>
       <div className="background-container">
         <div className="gif-left" style={{ backgroundImage: "url('/cat-eat.gif')" }} />
@@ -23,6 +28,7 @@ function App() {
         </div>
       </div>
     </Router>
+    </QueryClientProvider>
   );
 }
 

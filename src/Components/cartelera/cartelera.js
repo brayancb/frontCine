@@ -1,28 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import TarjetaCartelera from './TarjetaCartelera';
 import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 
 function Cartelera() {
-  const [peliculas, setPeliculas] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { data : peliculas, isLoading, isError, Error} = useQuery({
+        queryKey: ["peliculas-cartelera"],
+        queryFn: async() =>{
+          const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/movies/cartelera`);
+          return res.data;
+        },
+        staleTime: 1000*60*5,
+  });
 
-  useEffect(() => {
-    const fetchPeliculas = async () => {
-      try {
-        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/movies/cartelera`);
-        setPeliculas(res.data);
-      } catch (error) {
-        console.error('Error al obtener las películas:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPeliculas();
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return <p style={{ textAlign: 'center', marginTop: '40px' }}>Cargando cartelera...</p>;
+  }
+
+  if (isError) {
+    return <p style={{ textAlign: 'center', marginTop: '40px' }}>Error al obtener las películas: {Error.message}</p>;
   }
 
   if (peliculas.length === 0) {
