@@ -1,6 +1,8 @@
-# frontCine
+# frontcine
 
+## Pasos para iniciar el proyecto
 
-cd mi-login-app
-
+### 1. iniciar frontnend
+```bash
 npm start
+```
