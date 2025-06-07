@@ -11,31 +11,34 @@ import "./styles/App.css";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./Lib/ClienteCache";
 import Footer from "./Components/Footer/Footer";
+import { AuthProvider } from "./auth/authProvider";
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
-        <div className="background-container">
-          <div
-            className="body"
-            style={{ backgroundImage: "url('/COQUIMBO YORK CINEMA.gif')" }}
-          />
-          <div className="overlay"></div>
+      <AuthProvider>
+        <Router>
+          <div className="background-container">
+            <div
+              className="body"
+              style={{ backgroundImage: "url('/COQUIMBO YORK CINEMA.gif')" }}
+            />
+            <div className="overlay"></div>
 
-          <div className="App">
-            <h1>Welcome al cinema de Coquimbo York</h1>
+            <div className="App">
+              <h1>Welcome al cinema de Coquimbo York</h1>
 
-            <Routes>
-              <Route path="/" element={<LoginRegisterWrapper />} />
-              <Route path="/cartelera" element={<Cartelera />} />
-              <Route path="/pelicula" element={<InfoPage />} />
-            </Routes>
+              <Routes>
+                <Route path="/" element={<LoginRegisterWrapper />} />
+                <Route path="/cartelera" element={<Cartelera />} />
+                <Route path="/pelicula" element={<InfoPage />} />
+              </Routes>
 
-            <Footer />
+              <Footer />
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
