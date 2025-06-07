@@ -17,8 +17,7 @@ function App() {
     <QueryClientProvider client = {queryClient}>
     <Router>
       <div className="background-container">
-        <div className="gif-left" style={{ backgroundImage: "url('/cat-eat.gif')" }} />
-        <div className="gif-right" style={{ backgroundImage: "url('/cat-eat.gif')" }} />
+        <div className="body" style={{ backgroundImage: "url('/COQUIMBO YORK CINEMA.gif')" }} />
         <div className="overlay"></div>
 
         <div className="App">
