@@ -2,6 +2,8 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
+  min-height: 100vh;
+  overflow-y: auto;
 }
 
 .body {
@@ -11,10 +13,21 @@
   width: 100vw;
   height: 100vh;
   background-repeat: no-repeat;
-  background-size: cover;   /* puede ser contain si quieres mostrarlo completo */
+  background-size: cover; /* puede ser contain si quieres mostrarlo completo */
   background-position: center;
   z-index: 0;
   opacity: 0.5; /* o ajusta según tu preferencia */
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .overlay {
@@ -29,14 +42,18 @@
 
 .App {
   position: relative;
-  z-index: 2; /* contenido principal por encima de todo */
+  z-index: 2;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* en vez de height fijo */
   color: white;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  padding: 20px;
 }
 
 /* Botón */
@@ -49,7 +66,7 @@
   background: linear-gradient(135deg, #007bff, #00c6ff);
   border: none;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s;
 }
