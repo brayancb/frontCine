@@ -4,26 +4,17 @@
   overflow: hidden;
 }
 
-.gif-left,
-.gif-right {
-  position: absolute;
-  top: 50%;
-  width: 200px;
-  height: 200px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  transform: translateY(-50%);
-  z-index: 0;
-  opacity: 0.8;
-}
-
-.gif-left {
+.body {
+  position: fixed;
+  top: 0;
   left: 0;
-}
-
-.gif-right {
-  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;   /* puede ser contain si quieres mostrarlo completo */
+  background-position: center;
+  z-index: 0;
+  opacity: 0.5; /* o ajusta según tu preferencia */
 }
 
 .overlay {
