@@ -31,7 +31,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<LoginRegisterWrapper />} />
                 <Route path="/cartelera" element={<Cartelera />} />
-                <Route path="/pelicula" element={<InfoPage />} />
+                <Route path="/pelicula/:id" element={<InfoPage />} />
               </Routes>
 
               <Footer />

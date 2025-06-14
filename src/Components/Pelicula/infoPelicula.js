@@ -11,7 +11,7 @@ function InfoPage() {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        getMovieById('68439404b35f058ea2b8b9e5') //---> aqui
+        getMovieById(id) //---> aqui
             .then((data) => setPelicula(data))
             .catch((err) => setError('No se pudo cargar la información de la película'));
     }, [id]);
