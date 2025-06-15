@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Components/login';
 import Register from './Components/register';
 import Cartelera from './Components/cartelera/cartelera';
+import SubirPelicula from './Components/cartelera/SubirPelicula';
 import './styles/App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LoginRegisterWrapper />} />
             <Route path="/cartelera" element={<Cartelera />} />
+            <Route path="/subir" element={<SubirPelicula />} />
           </Routes>
         </div>
       </div>

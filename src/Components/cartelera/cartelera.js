@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TarjetaCartelera from './TarjetaCartelera';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Cartelera() {
   const [peliculas, setPeliculas] = useState([]);
@@ -30,10 +31,21 @@ function Cartelera() {
   }
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-      {peliculas.map((movie) => (
-        <TarjetaCartelera key={movie._id} movie={movie} />
-      ))}
+    <div>
+      {/* Botón para ir al formulario */}
+      <div style={{ textAlign: 'center', margin: '20px' }}>
+        <Link to="/subir">
+          <button style={{ padding: '10px 20px', fontSize: '16px' }}>
+            Agregar Película a Cartelera
+          </button>
+        </Link>
+      </div>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+        {peliculas.map((movie) => (
+          <TarjetaCartelera key={movie._id} movie={movie} />
+        ))}
+      </div>
     </div>
   );
 }
