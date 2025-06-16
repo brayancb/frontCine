@@ -15,9 +15,13 @@ function InfoPage() {
     //Este bloque de codigo obtiene pelicula con su showtime especifico
     //y muestra los primeros 5 horarios de la pelicula
     useEffect(() => {
+<<<<<<< HEAD
         if (!id) return;
 
         getMovieById(id)
+=======
+        getMovieById(id) //---> aqui
+>>>>>>> 174a0abd99b868b74065d594417bc61c9e8b4671
             .then((data) => setPelicula(data))
             .catch(() => setError('No se pudo cargar la información de la película'));
 
