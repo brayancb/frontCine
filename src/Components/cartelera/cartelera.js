@@ -16,15 +16,15 @@ function Cartelera() {
   });
 
   if (isLoading) {
-    return <p style={{ textAlign: 'center', marginTop: '40px' }}>Cargando cartelera...</p>;
+    return <p className="loading-message">Cargando cartelera...</p>
   }
 
   if (isError) {
-    return <p style={{ textAlign: 'center', marginTop: '40px' }}>Error al obtener las películas: {Error.message}</p>;
+    return <p className="error-message">Error al obtener las películas: {error.message}</p>
   }
 
   if (peliculas.length === 0) {
-    return <p style={{ textAlign: 'center', marginTop: '40px' }}>Películas aún no disponibles</p>;
+    return <p className="empty-message">Películas aún no disponibles</p>
   }
 
   return (
@@ -41,7 +41,7 @@ function Cartelera() {
         <TarjetaCartelera key={movie._id} movie={movie} />
       ))}
     </div>
-  );
+  )
 }
 
-export default Cartelera;
+export default Cartelera
