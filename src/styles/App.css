@@ -13,10 +13,10 @@
   width: 100vw;
   height: 100vh;
   background-repeat: no-repeat;
-  background-size: cover; /* puede ser contain si quieres mostrarlo completo */
+  background-size: cover;
   background-position: center;
   z-index: 0;
-  opacity: 0.5; /* o ajusta según tu preferencia */
+  opacity: 0.5; 
 }
 
 .login-wrapper {
